@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  jupyter-userA:
+    image: your-dockerhub-user/jupyter-gitlab:latest
+    environment:
+      - REPO_URL=https://github.com/Chelseavdm-ucd/Sand-Technologies-test
+    ports:
+      - "8888:8888"
+    volumes:
+      - /home/ec2-user/userA:/home/jovyan/work
+
+  jupyter-userB:
+    image: your-dockerhub-user/jupyter-gitlab:latest
+    environment:
+      - REPO_URL=https://github.com/Chelseavdm-ucd/Sand-Technologies-test
+    ports:
+      - "8889:8888"
+    volumes:
+      - /home/ec2-user/userB:/home/jovyan/work
