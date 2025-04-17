@@ -9,6 +9,10 @@ services:
       - "8888:8888"
     volumes:
       - /home/ec2-user/userA:/home/jovyan/work
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
 
   jupyter-userB:
     image: your-dockerhub-user/jupyter-gitlab:latest
@@ -18,3 +22,7 @@ services:
       - "8889:8888"
     volumes:
       - /home/ec2-user/userB:/home/jovyan/work
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
