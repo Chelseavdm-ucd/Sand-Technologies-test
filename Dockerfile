@@ -1,18 +1,22 @@
 FROM jupyter/base-notebook:latest
 
-# Install system packages
-RUN apt-get update && apt-get install -y git
+# Switch to root to install system packages
+USER root
+
+RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+
+# Switch back to jovyan 
+USER $NB_UID
 
 # Copy entrypoint script
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-# Add and install Python dependencies during build
+# install Python dependencies during build
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
-# Set workdir
+# set directory
 WORKDIR /home/jovyan
 
-# Entrypoint
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
