@@ -7,7 +7,7 @@ TARGET_DIR="/home/jovyan/work"
 if [ ! -d "$TARGET_DIR/.git" ]; then
     git clone "$REPO_URL" "$TARGET_DIR"
 else
-    echo "Repo already exists. Not touching branches."
+    echo "Repo already exists."
 fi
 
 exec "$@"
