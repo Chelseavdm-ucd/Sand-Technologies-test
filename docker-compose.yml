@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   jupyter-userA:
-    image: your-dockerhub-user/jupyter-gitlab:latest
+    image: jupyter-docker-demo:latest
     environment:
       - REPO_URL=https://github.com/Chelseavdm-ucd/Sand-Technologies-test
     ports:
@@ -15,7 +15,7 @@ services:
         condition: on-failure
 
   jupyter-userB:
-    image: your-dockerhub-user/jupyter-gitlab:latest
+    image: jupyter-docker-demo:latest
     environment:
       - REPO_URL=https://github.com/Chelseavdm-ucd/Sand-Technologies-test
     ports:
