@@ -19,4 +19,7 @@ RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
 WORKDIR /home/jovyan
 
+# Existing content ...
+
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+CMD ["start-notebook.sh"]
